@@ -117,12 +117,13 @@ section {
 
 footer {
   display: flex;
-  background-color:rgb(26, 26, 27);
+  background-color: rgb(26, 26, 27);
   border: 3px solid whitesmoke;
   height: 6vh;
   padding: 100px 0;
   align-items: center;
 }
+
 footer p {
   font-size: 1.5rem;
   color: white;
