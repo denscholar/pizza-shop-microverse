@@ -114,3 +114,17 @@ section {
   align-items: center;
   align-content: center;
 }
+
+footer {
+  display: flex;
+  background-color: rgb(26, 26, 27);
+  border: 3px solid whitesmoke;
+  height: 10vh;
+  padding-left: 100px;
+  align-items: center;
+}
+
+footer p {
+  font-size: 1.5rem;
+  color: white;
+}
