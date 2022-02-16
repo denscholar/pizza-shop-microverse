@@ -14,7 +14,6 @@ const getLikes = async () => {
 };
 
 const generateHtml = (results) => {
-
   results.slice(3, 12).forEach((result) => {
     const divItem = document.createElement('div');
     divItem.classList.add('item');
@@ -53,11 +52,9 @@ const desplayResult = async () => {
   generateHtml(data.hints);
 };
 
-
 desplayResult();
 
 document.querySelector('.search-result').addEventListener('click', (event) => {
   event.preventDefault();
   displayReservations(event);
 });
-
