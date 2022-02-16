@@ -30,7 +30,7 @@ const displayReservations = async (event) => {
             <td>Category: ${element.food.category} </td><td>Fat: ${element.food.nutrients.FAT}</td>
             </tr>
             <tr>
-            <td>Weight: ${element.measures[0].weight} </td><td>calories (kcal): ${element.food.nutrients.ENERC_KCAL}</td>
+            <td>Weight: ${element.measures[0].weight} </td><td>Calories (kcal): ${element.food.nutrients.ENERC_KCAL}</td>
             </tr>
             </table>
             </div>
