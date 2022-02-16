@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&display=swap");
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 * {
@@ -34,7 +34,8 @@ section {
   margin: 0 auto;
 }
 
-.brand {
+.brand,
+.popupLabel p {
   text-align: center;
   font-size: 40px;
   color: whitesmoke;
@@ -96,7 +97,8 @@ section {
 }
 
 .item .comment,
-.reserve {
+.reserve,
+td {
   padding: 10px;
   background-color: #404041;
   color: white;
@@ -113,4 +115,52 @@ section {
   display: flex;
   align-items: center;
   align-content: center;
+}
+
+#overlay {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: rgb(26, 26, 27);
+  overflow-y: scroll;
+  height: 100vh;
+  padding-top: 3rem;
+}
+
+.popupHeader {
+  width: 100%;
+  display: flex;
+  padding-left: 15%;
+  gap: 5rem;
+}
+
+.popupHeader img {
+  width: 70vw;
+  height: 40vh;
+}
+
+.fa-times {
+  font-size: 5rem;
+  color: #fff;
+}
+
+.popupInfo {
+  display: flex;
+  justify-content: center;
+}
+
+.popupInfo table {
+  width: 70%;
+}
+
+table tr {
+  width: 100%;
+}
+
+td {
+  width: 48%;
+  text-align: left;
+  font-size: 1.5rem;
 }
