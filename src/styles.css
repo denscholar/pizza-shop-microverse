@@ -107,10 +107,15 @@ section {
 }
 
 .heart {
-  font-size: 30px;
+  font-size: 25px;
   cursor: pointer;
-  color: red;
+  color: white;
+}
+
+.like-div {
   display: flex;
+  justify-content: flex-end;
+  gap: 5px;
   align-items: center;
   align-content: center;
 }
