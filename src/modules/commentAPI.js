@@ -1,8 +1,13 @@
-const getComments = async (id) => {
+const getComments = async (foodId) => {
   const json = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/GpS015MsEJIxdqPoPigd
-/comments?item_id=${id}`)
+/comments?item_id=${foodId}`)
     .then((response) => response.json());
   return json;
+};
+
+const commentCounter = (json) => {
+  if (json.length === undefined || json.length === null) return 0;
+  return json.length;
 };
 
 const addComments = async (foodId, username, comments) => {
@@ -21,4 +26,4 @@ const addComments = async (foodId, username, comments) => {
   return json;
 };
 
-export { getComments, addComments };
+export { getComments, commentCounter, addComments };
