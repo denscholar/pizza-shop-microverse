@@ -55,6 +55,8 @@ const desplayResult = async () => {
 desplayResult();
 
 document.querySelector('.search-result').addEventListener('click', (event) => {
+  
   event.preventDefault();
   displayReservations(event);
+  
 });
