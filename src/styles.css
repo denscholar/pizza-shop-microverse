@@ -144,6 +144,7 @@ td {
 .fa-times {
   font-size: 5rem;
   color: #fff;
+  cursor: pointer;
 }
 
 .popupInfo {
