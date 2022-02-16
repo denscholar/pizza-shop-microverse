@@ -1,6 +1,4 @@
 import './styles.css';
-import './popupStyle.css';
-import displayReservations from './modules/display_reservations';
 
 const searchResult = document.querySelector('.search-result');
 
@@ -14,11 +12,11 @@ const getLikes = async () => {
 };
 
 const generateHtml = (results) => {
-  results.slice(3, 12).forEach((result) => {
+  results.slice(3, 13).forEach((result) => {
     const divItem = document.createElement('div');
     divItem.classList.add('item');
     divItem.innerHTML = `
-        <img src="${result.food.image}" alt="${result.food.label}"   ">
+        <img src="${result.food.image}" alt="">
         <div class="flex-container">
             <h1 class="title">${result.food.label}</h1>
             <div class="like-div">
@@ -29,7 +27,7 @@ const generateHtml = (results) => {
         </div>
         <p class="item-data">
             <a class="comment" href="">Comment</a>
-            <a class="reserve" id=${result.food.foodId} href="">Reservation</a>
+            <a class="reserve" href="">Reservation</a>
         </p>
         `;
     searchResult.appendChild(divItem);
@@ -53,8 +51,3 @@ const desplayResult = async () => {
 };
 
 desplayResult();
-
-document.querySelector('.search-result').addEventListener('click', (event) => {
-  event.preventDefault();
-  displayReservations(event);
-});
