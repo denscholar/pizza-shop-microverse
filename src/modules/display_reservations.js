@@ -2,10 +2,18 @@ const appId = '2d879374';
 const appKey = 'f1a2011b05e44970c7a43ac9a5a11568';
 
 const displayReservations = async (event) => {
+
+if(event.target.classList.contains('reserve')){
+
+
+  
+
   const sourceId = event.target.id;
   const popup = document.createElement('div');
   const parentNode = document.querySelector('body');
   const existingNode = document.querySelector('section');
+
+  console.log('sourceId');
 
   popup.setAttribute('id', 'overlay');
   existingNode.parentNode.insertBefore(popup, existingNode);
@@ -44,6 +52,11 @@ const displayReservations = async (event) => {
   closeBtn.addEventListener('click', () => {
     parentNode.removeChild(popup);
   });
+
+}
+
 };
+
+
 
 export default displayReservations;
