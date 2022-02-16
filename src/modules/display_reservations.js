@@ -33,9 +33,7 @@ const displayReservations = async (event) => {
             <td>Weight: ${element.measures[0].weight} </td><td>Calories (kcal): ${element.food.nutrients.ENERC_KCAL}</td>
             </tr>
             </table>
-            </div>
-                        
-            `;
+            </div> `;
     }
   });
 
