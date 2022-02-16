@@ -1,4 +1,5 @@
 import './styles.css';
+import './popupStyle.css';
 import displayReservations from './modules/display_reservations';
 
 const searchResult = document.querySelector('.search-result');
