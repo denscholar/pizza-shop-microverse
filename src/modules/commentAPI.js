@@ -21,4 +21,8 @@ const addComments = async (id, username, comments) => {
   return json;
 };
 
+const commentCounter = (comments) => {
+  
+}
+
 export { getComments, addComments };
