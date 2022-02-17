@@ -115,7 +115,7 @@ section {
 .like-div {
   display: flex;
   justify-content: flex-end;
-  gap: 5px;
+  gap: 10px;
   align-items: center;
   align-content: center;
 }
@@ -152,5 +152,13 @@ footer {
 
 footer p {
   font-size: 1.5rem;
+  color: white;
+}
+
+.icon {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  font-size: 25px;
   color: white;
 }
