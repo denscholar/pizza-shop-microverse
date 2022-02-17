@@ -58,4 +58,20 @@ const showComments = async (id) => {
   UL.insertAdjacentHTML('beforeend', html);
 };
 
-export default postComment;
+const addComments = async (event, form, id) => {
+  event.preventDefault();
+  const count = document.querySelector('.counter');
+  const user = form.querySelector('input');
+  const comment = form.querySelector('textarea');
+
+  await postComment(user.value, comment.value, id);
+  await showComments(id);
+  count.textContent = await commentCounter(id);
+  form.reset();
+};
+
+export {
+  addComments,
+  commentCounter,
+  getComments,
+};
