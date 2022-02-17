@@ -1,4 +1,6 @@
 import './styles.css';
+import './popupStyle.css';
+import displayReservations from './modules/display_reservations.js';
 
 const header = new Headers({ 'Content-type': 'application/json; charset=UTF-8' });
 const searchResult = document.querySelector('.search-result');
@@ -82,9 +84,7 @@ const desplayResult = async () => {
 
 desplayResult();
 
-// document.querySelector('.search-result').addEventListener('click', (event) => {
-//   event.preventDefault();
-//   displayReservations(event);
-// });
-
-// 3vYwcS9Pea3q0Wq63Rnx
+document.querySelector('.search-result').addEventListener('click', (event) => {
+  event.preventDefault();
+  displayReservations(event);
+});
