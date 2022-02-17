@@ -1,9 +1,9 @@
-import { commentCounter, getComments } from "./commentAPI";
+import { commentCounter, getComments } from './commentAPI.js';
 
 const appId = '2d879374';
 const appKey = 'f1a2011b05e44970c7a43ac9a5a11568';
 
-const updateComments = async (foodId) => {
+export const updateComments = async (foodId) => {
   const json = await getComments(foodId);
   document.querySelector('.comment').innerHTML = '';
   if (json.length !== undefined) {
@@ -16,9 +16,9 @@ const updateComments = async (foodId) => {
   } else {
     document.querySelector('.comment > h4').innerText = `Comments (${commentCounter(json)})`;
   }
-}
+};
 
-const displayComments = async (event) => {
+export const displayComments = async (event) => {
   const sourceId = event.target.id;
   const popup = document.createElement('div');
   const parentNode = document.querySelector('body');
@@ -53,9 +53,9 @@ const displayComments = async (event) => {
             </div>
 
         <div class="wrapper inner">
-          <div id="${result.food.foodId}">
+          <div class="comment">
           </div>
-          
+
         <div>
           <form action="">
             <h3>Add Comment</h3>
@@ -82,5 +82,3 @@ const displayComments = async (event) => {
     parentNode.removeChild(popup);
   });
 };
-
-export { displayComments, updateComments };
