@@ -1,29 +1,76 @@
-const getComments = async (foodId) => {
-  const json = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/GpS015MsEJIxdqPoPigd
-/comments?item_id=${foodId}`)
-    .then((response) => response.json());
-  return json;
-};
+const URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps';
+const ID = 'IvP42xNcmZ7sT5rp87wL';
 
-const commentCounter = (json) => {
-  if (json.length === undefined || json.length === null) return 0;
-  return json.length;
-};
-
-const addComments = async (foodId, username, comments) => {
-  const commentInfo = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/IvP42xNcmZ7sT5rp87wL/comments', {
+const makeComments = async (username, comment, id) => {
+  const resolve = await fetch(`${URL}/${ID}/comments`, {
     method: 'POST',
     body: JSON.stringify({
-      item_id: foodId,
+      item_id: id,
       username,
-      comments,
+      comment,
     }),
-    headers: {
-      'content-type': 'application/json; charset=UTF-8',
-    },
+    headers: { 'Content-type': 'application/JSON' },
   });
-  const json = await commentInfo.text();
-  return json;
+
+  const result = await resolve.text();
+  return result;
 };
 
-export { getComments, commentCounter, addComments };
+const getComment = async (id) => {
+  const resolve = await fetch(`${URL}/${ID}/comments?item_id=${id}`);
+  const result = await resolve.json();
+
+  if (!result.length) {
+    return [];
+  }
+
+  return result;
+};
+
+const commentsCounter = async (id) => {
+  const commentsNum = await getComment(id);
+  if (!commentsNum.length) {
+    return 0;
+  }
+  return commentsNum.length;
+};
+
+const commentTemplate = (date, name, comment) => `
+  <li>
+    <span>${date}</span>
+    <span>${name}: </span>
+    <span>${comment}</span>
+  </li>
+`;
+
+const displayComments = async (id) => {
+  const ul = document.querySelector('ul');
+  const commentArr = await getComment(id);
+  ul.innerHTML = '';
+  let html = '';
+
+  commentArr.forEach((element) => {
+    const commentItem = commentTemplate(
+      element.creation_date,
+      element.username,
+      element.comment,
+    );
+    html += commentItem;
+  });
+  ul.insertAdjacentHTML('beforeend', html);
+};
+
+const addComment = async (form, id) => {
+  const itmCounter = document.querySelector('.counter');
+  const name = document.querySelector('input');
+  const comment = document.querySelector('textarea');
+
+  await makeComments(name.value, comment.value, id);
+  await displayComments(id);
+  itmCounter.textContent = await commentsCounter(id);
+  form.reset();
+};
+
+export {
+  displayComments, addComment, commentsCounter, getComment,
+};

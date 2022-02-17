@@ -1,20 +1,20 @@
-import { commentCounter, getComments, addComments } from './commentAPI.js';
+import { commentsCounter, getComment, addComment } from './commentAPI.js';
 
 const appId = '2d879374';
 const appKey = 'f1a2011b05e44970c7a43ac9a5a11568';
 
 const updateComments = async (foodId) => {
-  const json = await getComments(foodId);
+  const json = await getComment(foodId);
   document.querySelector('.comment').innerHTML = '';
   if (json.length !== undefined) {
     json.forEach((user) => {
-      document.querySelector('.comment > h4').innerText = `Comments (${commentCounter(json)})`;
+      document.querySelector('.comment > h4').innerText = `Comments (${commentsCounter(json)})`;
       const li = document.createElement('li');
       li.innerText = `${user.creation_date}. ${user.username}: ${user.comment}`;
       document.querySelector('.comment > ul').appendChild(li);
     });
   } else {
-    document.querySelector('.comment > h4').innerText = `Comments (${commentCounter(json)})`;
+    document.querySelector('.comment > h4').innerText = `Comments (${commentsCounter(json)})`;
   }
 };
 
@@ -76,19 +76,19 @@ const displayComments = async (event) => {
     }
   });
 
-  const postComments = async (event, form, id) => {
-    event.preventDefault();
+  const postComments = async (form, id) => {
     const counter = document.querySelector('form');
     const name = document.querySelector('input');
     const comment = document.querySelector('textarea');
 
-    await addComments(name.value, comment.value, id);
+    await addComment(name.value, comment.value, id);
     await displayComments(id);
-    counter.textContent = await commentCounter(id);
+    counter.textContent = await commentsCounter(id);
     form.reset();
   };
 
   postComments();
+  updateComments();
 
   const closeBtn = document.querySelector('.fa-times');
 
@@ -97,4 +97,4 @@ const displayComments = async (event) => {
   });
 };
 
-export { displayComments, addComments, updateComments };
+export default displayComments;

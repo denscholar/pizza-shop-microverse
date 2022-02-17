@@ -1,7 +1,7 @@
 import './styles.css';
 import './popupStyle.css';
 import displayReservations from './modules/display_reservations.js';
-import { displayComments, updateComments } from './modules/displayComments.js';
+import displayComments from './modules/displayComments.js';
 
 const searchResult = document.querySelector('.search-result');
 
@@ -39,6 +39,5 @@ desplayResult();
 document.querySelector('.search-result').addEventListener('click', (event) => {
   event.preventDefault();
   displayReservations(event);
-  updateComments();
-  displayComments();
+  displayComments(event);
 });
