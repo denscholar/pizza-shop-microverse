@@ -42,7 +42,15 @@ if(event.target.classList.contains('reserve')){
             </tr>
             </table>
             </div>
-                        
+            <div class="popupReservation">
+            <h2>Add a reservation</h2>
+            <form>
+            <input type="text" name="userName" id="userName" placeholder="Your name" class="userInput" required>
+            <input type="date" name="startDate" id="startDate" placeholder="Start date" class="userInput" required>
+            <input type="date" name="endDate" id="endDate" placeholder="Start date" class="userInput" required>
+            <button type="submit" class="submitBtn">Reserve</button>
+            </form>      
+            </div>   
             `;
     }
   });
