@@ -4,7 +4,7 @@ const appKey = 'f1a2011b05e44970c7a43ac9a5a11568';
 const displayReservations = async (event) => {
   const sourceId = event.target.id;
   const popup = document.createElement('div');
-  const parentNode = document.querySelector('body');
+  // const parentNode = document.querySelector('body');
   const existingNode = document.querySelector('section');
 
   popup.setAttribute('id', 'overlay');
@@ -39,11 +39,11 @@ const displayReservations = async (event) => {
     }
   });
 
-  const closeBtn = document.querySelector('.fa-times');
+  // const closeBtn = document.querySelector('.fa-times');
 
-  closeBtn.addEventListener('click', () => {
-    parentNode.removeChild(popup);
-  });
+  // closeBtn.addEventListener('click', () => {
+  //   parentNode.removeChild(popup);
+  // });
 };
 
 export default displayReservations;
