@@ -38,7 +38,7 @@ const displayComments = async (event) => {
             </tr>
             </table>
             </div>
-            <div class="popupReservation">
+            <div class="comment-section">
             <h2>Add a comment</h2>
             <form >
                 <input type="text" placeholder="Name" id="username" name="username" maxlength="20" required/>

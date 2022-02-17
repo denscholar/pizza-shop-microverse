@@ -1,5 +1,6 @@
 import './styles.css';
 import './popupStyle.css';
+import './comment.css';
 import displayReservations from './modules/display_reservations.js';
 import displayComments from './modules/displayComments.js';
 

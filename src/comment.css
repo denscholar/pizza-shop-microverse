@@ -1,0 +1,18 @@
+.comment-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  min-height: 30vh;
+}
+
+.comment-section form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1.5rem;
+  gap: 1rem;
+}
