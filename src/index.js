@@ -59,13 +59,3 @@ document.querySelector('.search-result').addEventListener('click', (event) => {
   displayReservations(event);
 });
 
-// document.querySelector('.search-result').addEventListener('click', (event) => {
-
-//   event.preventDefault();
-//   if(event.target.classList.contains('submitBtn')){
-
-//     console.log(event.target);
-
-// }
-
-// });
