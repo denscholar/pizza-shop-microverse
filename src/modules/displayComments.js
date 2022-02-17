@@ -1,3 +1,5 @@
+import postComment from './commentAPI.js';
+
 const appId = '2d879374';
 const appKey = 'f1a2011b05e44970c7a43ac9a5a11568';
 
@@ -40,6 +42,8 @@ const displayComments = async (event) => {
             </div>
             <div class="comment-section">
             <h2>Add a comment</h2>
+            <h3>Comments (<span class="counter">${commentsLength}</span>)</h2>
+            <ul class="comment-container"></ul>
             <form >
                 <input type="text" placeholder="Name" id="username" name="username" maxlength="20" required/>
                 <textarea name="text-area" maxlength="220" id:"comment" placeholder="Leave a comment" required></textarea>
@@ -63,6 +67,7 @@ const displayComments = async (event) => {
       };
 
       createComments(obj);
+      postComment();
     });
 
     const closeBtn = document.querySelector('.fa-times');
