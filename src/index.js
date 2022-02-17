@@ -66,6 +66,13 @@ const generateHtml = (results) => {
   icons.forEach((icon) => {
     icon.addEventListener('click', addLikes);
   });
+
+  // counter
+  const counterHandler = document.querySelector('.counter');
+  const counter = results.slice(3, 12).length;
+  counterHandler.innerHTML = `
+    ${counter} Pizza currently available
+  `;
 };
 
 const desplayResult = async () => {
