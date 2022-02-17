@@ -90,7 +90,6 @@ const createReservation = async (obj) => {
   };
 
   fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/IvP42xNcmZ7sT5rp87wL/reservations/', requestOptions);
-
 };
 
 export default displayReservations;
