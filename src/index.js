@@ -1,7 +1,7 @@
 import './styles.css';
 import './popupStyle.css';
 import displayReservations from './modules/display_reservations.js';
-import { displayComments, updateComments } from './modules/popUp.js';
+import { displayComments, updateComments } from './modules/displayComments.js';
 
 const searchResult = document.querySelector('.search-result');
 

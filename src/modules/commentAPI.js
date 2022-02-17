@@ -11,7 +11,7 @@ const commentCounter = (json) => {
 };
 
 const addComments = async (foodId, username, comments) => {
-  const commentInfo = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/azyi57ifalsg/comments', {
+  const commentInfo = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/IvP42xNcmZ7sT5rp87wL/comments', {
     method: 'POST',
     body: JSON.stringify({
       item_id: foodId,

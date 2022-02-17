@@ -1,16 +1,16 @@
-import { commentCounter, getComments } from './commentAPI.js';
+import { commentCounter, getComments, addComments } from './commentAPI.js';
 
 const appId = '2d879374';
 const appKey = 'f1a2011b05e44970c7a43ac9a5a11568';
 
-export const updateComments = async (foodId) => {
+const updateComments = async (foodId) => {
   const json = await getComments(foodId);
   document.querySelector('.comment').innerHTML = '';
   if (json.length !== undefined) {
     json.forEach((user) => {
       document.querySelector('.comment > h4').innerText = `Comments (${commentCounter(json)})`;
       const li = document.createElement('li');
-      li.innerText = `${user.item_id}. ${user.username}: ${user.comment}`;
+      li.innerText = `${user.creation_date}. ${user.username}: ${user.comment}`;
       document.querySelector('.comment > ul').appendChild(li);
     });
   } else {
@@ -18,7 +18,7 @@ export const updateComments = async (foodId) => {
   }
 };
 
-export const displayComments = async (event) => {
+const displayComments = async (event) => {
   const sourceId = event.target.id;
   const popup = document.createElement('div');
   const parentNode = document.querySelector('body');
@@ -65,7 +65,7 @@ export const displayComments = async (event) => {
               <span class="border"></span>
             </label>
             <label class="form-group">
-              <textarea id="user-opinion" class="form-control-details" required placeholder="Share your thought"></textarea>
+              <textarea id="opinion" class="form-control-details" required placeholder="Leave a comment"></textarea>
               <span class="border"></span>
             </label>
             <button id="submit-comment">Submit</button>
@@ -76,9 +76,25 @@ export const displayComments = async (event) => {
     }
   });
 
+  const postComments = async (event, form, id) => {
+    event.preventDefault();
+    const counter = document.querySelector('form');
+    const name = document.querySelector('input');
+    const comment = document.querySelector('textarea');
+
+    await addComments(name.value, comment.value, id);
+    await displayComments(id);
+    counter.textContent = await commentCounter(id);
+    form.reset();
+  };
+
+  postComments();
+
   const closeBtn = document.querySelector('.fa-times');
 
   closeBtn.addEventListener('click', () => {
     parentNode.removeChild(popup);
   });
 };
+
+export { displayComments, addComments, updateComments };
