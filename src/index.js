@@ -1,6 +1,6 @@
 import './styles.css';
 import './popupStyle.css';
-import displayReservations from './modules/display_reservations';
+import displayReservations from './modules/display_reservations.js';
 
 const searchResult = document.querySelector('.search-result');
 
@@ -55,8 +55,17 @@ const desplayResult = async () => {
 desplayResult();
 
 document.querySelector('.search-result').addEventListener('click', (event) => {
-  
   event.preventDefault();
   displayReservations(event);
-  
 });
+
+// document.querySelector('.search-result').addEventListener('click', (event) => {
+
+//   event.preventDefault();
+//   if(event.target.classList.contains('submitBtn')){
+
+//     console.log(event.target);
+
+// }
+
+// });
