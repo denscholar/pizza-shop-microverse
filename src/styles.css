@@ -11,6 +11,18 @@ body {
   text-decoration: none;
 }
 
+.title-cover {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.title-cover .counter {
+  font-size: 25px;
+  color: whitesmoke;
+}
+
 .img {
   width: 100%;
   height: 100%;
@@ -59,7 +71,6 @@ section {
   text-align: center;
   font-size: 40px;
   color: whitesmoke;
-  margin-bottom: 30px;
 }
 
 .search-result {
@@ -128,10 +139,15 @@ section {
 }
 
 .heart {
-  font-size: 30px;
+  font-size: 25px;
   cursor: pointer;
-  color: red;
+  color: white;
+}
+
+.like-div {
   display: flex;
+  justify-content: flex-end;
+  gap: 10px;
   align-items: center;
   align-content: center;
 }
@@ -168,5 +184,13 @@ footer {
 
 footer p {
   font-size: 1.5rem;
+  color: white;
+}
+
+.icon {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  font-size: 25px;
   color: white;
 }
