@@ -13,9 +13,8 @@ const displayComments = async (event) => {
     existingNode.parentNode.insertBefore(popup, existingNode);
 
     const comments = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/IvP42xNcmZ7sT5rp87wL/comments?item_id=${sourceId}`);
-    const comList = await comments.json();
 
-    counter = comList.length;
+    counter = comments.length;
 
     const baseURL = `https://api.edamam.com/api/food-database/v2/parser?ingr=pizza&app_id=${appId}&app_key=${appKey}&to=13`;
     const response = await fetch(baseURL);
@@ -44,21 +43,29 @@ const displayComments = async (event) => {
             </tr>
             </table>
             </div>
+            
             <div class="comment-section">
+            <div>
+            <p>Number of Comments (${counter})</p>
+            </div>
+
+            <ul class="comment-container">
+
+            </ul>
+
             <h2>Add a comment</h2>
-            <h4>Comments (<span class="counter">${counter}</span>)</h4>
-            <ul class="comment-container"></ul>
+            
             <form >
                 <input type="text" placeholder="Name" id="username" name="username" maxlength="20" required/>
                 <textarea name="text-area" maxlength="220" id:"comment" placeholder="Leave a comment" required></textarea>
                 <button type="submit" class="add-btn">Comment</button>
-              </form>     
-            </div>   
+              </form>
+            </div>
             `;
       }
     });
 
-    const submitButton = document.querySelector('.submitBtn');
+    const submitButton = document.querySelector('.add-btn');
     const createComments = async (obj) => {
       const myHeaders = new Headers();
       myHeaders.append('Content-Type', 'application/json');
@@ -77,12 +84,12 @@ const displayComments = async (event) => {
 
     submitButton.addEventListener('click', (event) => {
       event.preventDefault();
-      const nameOfUser = document.querySelector('#username').value;
-      const comment = document.querySelector('#comment').value;
+      const user = document.querySelector('#username').value;
+      const comt = document.querySelector('#comment').value;
       const obj = {
         item_id: itemCode,
-        username: nameOfUser,
-        comt: comment,
+        username: user,
+        comment: comt,
       };
 
       createComments(obj);
