@@ -52,14 +52,30 @@ const displayComments = async (event) => {
 
     const submitButton = document.querySelector('.add-btn');
 
+    const createComments = async (obj) => {
+      const myHeaders = new Headers();
+      myHeaders.append('Content-Type', 'application/json');
+
+      const raw = JSON.stringify(obj);
+
+      const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow',
+      };
+
+      fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/IvP42xNcmZ7sT5rp87wL/comments/', requestOptions);
+    };
+
     submitButton.addEventListener('click', (event) => {
-      event.preventDefault;
+      event.preventDefault();
       const nameOfUser = document.querySelector('#userName').value;
       const comt = document.querySelector('#comment').value;
       const obj = {
         item_id: itemCode,
         username: nameOfUser,
-        comt: comment,
+        comment: comt,
       };
 
       createComments(obj);
@@ -71,22 +87,6 @@ const displayComments = async (event) => {
       parentNode.removeChild(popup);
     });
   }
-};
-
-const createComments = async (obj) => {
-  const myHeaders = new Headers();
-  myHeaders.append('Content-Type', 'application/json');
-
-  const raw = JSON.stringify(obj);
-
-  const requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    body: raw,
-    redirect: 'follow',
-  };
-
-  fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/IvP42xNcmZ7sT5rp87wL/comments/', requestOptions);
 };
 
 export default displayComments;
