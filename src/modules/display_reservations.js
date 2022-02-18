@@ -55,13 +55,13 @@ counter = reservItem.length;
             </tr>
             </table>
             </div>
-<div>
-Counter = ${counter}
+<div class = "displayCounter">
+Reservations (${counter})
 
 
 </div>
 
-            <div>
+            <div class="show">
             <ul>
             ${str1}
             </ul>>
