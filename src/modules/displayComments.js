@@ -17,8 +17,9 @@ const displayComments = async (event) => {
     const commentItem = await comments.json();
 
     commentItem.forEach((element) => {
-      comStr += `<li> ${element.item_id.toLocaleString().split(',')[0]} by ${element.username} </li>`;
+      comStr += `<div> ${element.username} : ${element.comment} </div>`;
     });
+
     counter = commentItem.length;
 
     const baseURL = `https://api.edamam.com/api/food-database/v2/parser?ingr=pizza&app_id=${appId}&app_key=${appKey}&to=13`;
@@ -55,16 +56,16 @@ const displayComments = async (event) => {
               <p>Comments (${counter})</p>
             </div>
 
-            <ul>
+            <div>
             ${comStr}
-            </ul>
+            </div>
             
             <h4>Add a comment </h4>
             
 
             <form class="form-comment">
-                <input type="text" placeholder="Name" id="username" name="username" maxlength="20"/>
-                <textarea name="text-area" maxlength="220" id:"comment" placeholder="Leave a comment"></textarea>
+                <input type="text" placeholder="Name" id="username" name="username" maxlength="20 required"/>
+                <textarea name="text-area" maxlength="300" id:"comment" placeholder="Leave a comment" required></textarea>
                 <button type="submit" class="add-btn">Comment</button>
               </form>
           </div>
@@ -92,7 +93,7 @@ const displayComments = async (event) => {
     submitButton.addEventListener('click', (event) => {
       event.preventDefault();
       const nameOfUser = document.querySelector('#username').value;
-      const comt = document.querySelector('#comment').value;
+      const comt = document.querySelector('textarea').value;
       const obj = {
         item_id: itemCode,
         username: nameOfUser,
