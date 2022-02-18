@@ -3,7 +3,6 @@ const appKey = 'f1a2011b05e44970c7a43ac9a5a11568';
 let str1 = '';
 let counter = 0;
 
-
 const displayReservations = async (event) => {
   if (event.target.classList.contains('reserve')) {
     const sourceId = event.target.id;
@@ -95,7 +94,7 @@ const displayReservations = async (event) => {
       const nameOfUser = document.querySelector('#userName').value;
       const starting = document.querySelector('#startDate').value;
       const ending = document.querySelector('#endDate').value;
-      localStorage.setItem("session", event);
+      localStorage.setItem('session', event);
       const obj = {
         item_id: itemCode,
         username: nameOfUser,
@@ -107,8 +106,6 @@ const displayReservations = async (event) => {
 
       document.querySelector('.reservationForm').reset();
       displayReservations(event);
-      location.reload();
-   
     });
 
     const closeBtn = document.querySelector('.fa-times');
