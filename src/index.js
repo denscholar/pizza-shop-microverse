@@ -1,13 +1,11 @@
 import './styles.css';
 import './popupStyle.css';
 import displayReservations from './modules/display_reservations.js';
+import counter from './modules/counter.js';
+import { baseURL, likesUrl } from './modules/apis.js';
 
 const header = new Headers({ 'Content-type': 'application/json; charset=UTF-8' });
 const searchResult = document.querySelector('.search-result');
-
-const appId = '2d879374';
-const appKey = 'f1a2011b05e44970c7a43ac9a5a11568';
-const likesUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/IvP42xNcmZ7sT5rp87wL/likes';
 
 const getLikes = async () => {
   try {
@@ -66,17 +64,9 @@ const generateHtml = (results) => {
   icons.forEach((icon) => {
     icon.addEventListener('click', addLikes);
   });
-
-  // counter
-  const counterHandler = document.querySelector('.counter');
-  const counter = results.slice(3, 12).length;
-  counterHandler.innerHTML = `
-    ${counter} Pizza currently available
-  `;
 };
 
 const desplayResult = async () => {
-  const baseURL = `https://api.edamam.com/api/food-database/v2/parser?ingr=pizza&app_id=${appId}&app_key=${appKey}&to=13`;
   const response = await fetch(baseURL);
   const data = await response.json();
   generateHtml(data.hints);
@@ -87,4 +77,13 @@ desplayResult();
 document.querySelector('.search-result').addEventListener('click', (event) => {
   event.preventDefault();
   displayReservations(event);
+});
+
+// counter
+counter().then((data) => {
+  const counter = data.hints.slice(3, 12).length;
+  const countHeader = document.querySelector('.counter');
+  countHeader.textContent = `
+    ${counter} Pizzers available
+  `;
 });
