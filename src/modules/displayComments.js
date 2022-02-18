@@ -85,11 +85,11 @@ const displayComments = async (event) => {
 
     submitButton.addEventListener('click', (event) => {
       event.preventDefault();
-      const user = document.querySelector('#username').value;
+      const nameOfUser = document.querySelector('#userName').value;
       const comt = document.querySelector('#comment').value;
       const obj = {
         item_id: itemCode,
-        username: user,
+        username: nameOfUser,
         comment: comt,
       };
 
