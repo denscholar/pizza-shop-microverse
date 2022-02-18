@@ -106,3 +106,28 @@ td {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+
+.displayCounter p {
+  text-align: center;
+  font-size: 40px;
+  color: whitesmoke;
+  margin-bottom: 30px;
+}
+
+.show ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.show ul li {
+  font-size: 1.5rem;
+  padding: 10px;
+  background-color: #404041;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 4px;
+  margin-top: 1.1rem;
+}
