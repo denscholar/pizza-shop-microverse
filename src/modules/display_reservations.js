@@ -1,5 +1,7 @@
 const appId = '2d879374';
 const appKey = 'f1a2011b05e44970c7a43ac9a5a11568';
+let str1 = '';
+let counter = 0;
 
 const displayReservations = async (event) => {
   if (event.target.classList.contains('reserve')) {
@@ -10,6 +12,21 @@ const displayReservations = async (event) => {
 
     popup.setAttribute('id', 'overlay');
     existingNode.parentNode.insertBefore(popup, existingNode);
+
+    
+
+    const reservations = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/IvP42xNcmZ7sT5rp87wL/reservations?item_id=${sourceId}`)
+  const reservItem =  await reservations.json();
+   
+  reservItem.forEach(element => {
+    // str1 = str1 + `<tr><td>${element.date_start}</td><td>${element.username}</td><td>${element.date_end}t</td></tr>`
+  
+    str1 = str1 + `<li> ${element.date_start} - ${element.date_end} by ${element.username} </li>`
+  
+  })
+counter = reservItem.length;
+
+ 
 
     const baseURL = `https://api.edamam.com/api/food-database/v2/parser?ingr=pizza&app_id=${appId}&app_key=${appKey}&to=13`;
     const response = await fetch(baseURL);
@@ -38,6 +55,17 @@ const displayReservations = async (event) => {
             </tr>
             </table>
             </div>
+<div>
+Counter = ${counter}
+
+
+</div>
+
+            <div>
+            <ul>
+            ${str1}
+            </ul>>
+            </div>
             <div class="popupReservation">
             <h2>Add a reservation</h2>
             <form>
@@ -52,9 +80,24 @@ const displayReservations = async (event) => {
     });
 
     const submitButton = document.querySelector('.submitBtn');
+    const createReservation = async (obj) => {
+      const myHeaders = new Headers();
+      myHeaders.append('Content-Type', 'application/json');
+
+      const raw = JSON.stringify(obj);
+
+      const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow',
+      };
+
+      fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/IvP42xNcmZ7sT5rp87wL/reservations/', requestOptions);
+    };
 
     submitButton.addEventListener('click', (event) => {
-      event.preventDefault;
+      event.preventDefault();
       const nameOfUser = document.querySelector('#userName').value;
       const starting = document.querySelector('#startDate').value;
       const ending = document.querySelector('#endDate').value;
@@ -74,22 +117,6 @@ const displayReservations = async (event) => {
       parentNode.removeChild(popup);
     });
   }
-};
-
-const createReservation = async (obj) => {
-  const myHeaders = new Headers();
-  myHeaders.append('Content-Type', 'application/json');
-
-  const raw = JSON.stringify(obj);
-
-  const requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    body: raw,
-    redirect: 'follow',
-  };
-
-  fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/IvP42xNcmZ7sT5rp87wL/reservations/', requestOptions);
 };
 
 export default displayReservations;
