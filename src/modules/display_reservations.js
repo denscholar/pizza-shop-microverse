@@ -13,20 +13,13 @@ const displayReservations = async (event) => {
     popup.setAttribute('id', 'overlay');
     existingNode.parentNode.insertBefore(popup, existingNode);
 
-    
+    const reservations = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/IvP42xNcmZ7sT5rp87wL/reservations?item_id=${sourceId}`);
+    const reservItem = await reservations.json();
 
-    const reservations = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/IvP42xNcmZ7sT5rp87wL/reservations?item_id=${sourceId}`)
-  const reservItem =  await reservations.json();
-   
-  reservItem.forEach(element => {
-    // str1 = str1 + `<tr><td>${element.date_start}</td><td>${element.username}</td><td>${element.date_end}t</td></tr>`
-  
-    str1 = str1 + `<li> ${element.date_start} - ${element.date_end} by ${element.username} </li>`
-  
-  })
-counter = reservItem.length;
-
- 
+    reservItem.forEach((element) => {
+      str1 += `<li> ${element.date_start.toLocaleString().split(',')[0]} - ${element.date_end.toLocaleString().split(',')[0]} by ${element.username} </li>`;
+    });
+    counter = reservItem.length;
 
     const baseURL = `https://api.edamam.com/api/food-database/v2/parser?ingr=pizza&app_id=${appId}&app_key=${appKey}&to=13`;
     const response = await fetch(baseURL);
