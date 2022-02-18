@@ -1,5 +1,6 @@
 const appId = '2d879374';
 const appKey = 'f1a2011b05e44970c7a43ac9a5a11568';
+let comStr = '';
 let counter = 0;
 
 const displayComments = async (event) => {
@@ -13,8 +14,13 @@ const displayComments = async (event) => {
     existingNode.parentNode.insertBefore(popup, existingNode);
 
     const comments = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/IvP42xNcmZ7sT5rp87wL/comments?item_id=${sourceId}`);
+    const commentItem = await comments.json();
 
-    counter = comments.length;
+    commentItem.forEach((element) => {
+      comStr += `<li> ${element.item_id.toLocaleString().split(',')[0]} by ${element.username} </li>`;
+    });
+
+    counter = commentItem.length;
 
     const baseURL = `https://api.edamam.com/api/food-database/v2/parser?ingr=pizza&app_id=${appId}&app_key=${appKey}&to=13`;
     const response = await fetch(baseURL);
@@ -51,6 +57,7 @@ const displayComments = async (event) => {
             </div>
 
             <ul>
+            ${comStr}
             </ul>
             
             <h4>Add a comment </h4>
@@ -85,7 +92,7 @@ const displayComments = async (event) => {
 
     submitButton.addEventListener('click', (event) => {
       event.preventDefault();
-      const nameOfUser = document.querySelector('#userName').value;
+      const nameOfUser = document.querySelector('#username').value;
       const comt = document.querySelector('#comment').value;
       const obj = {
         item_id: itemCode,
