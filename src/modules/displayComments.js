@@ -19,7 +19,6 @@ const displayComments = async (event) => {
     commentItem.forEach((element) => {
       comStr += `<li> ${element.item_id.toLocaleString().split(',')[0]} by ${element.username} </li>`;
     });
-
     counter = commentItem.length;
 
     const baseURL = `https://api.edamam.com/api/food-database/v2/parser?ingr=pizza&app_id=${appId}&app_key=${appKey}&to=13`;
@@ -63,7 +62,7 @@ const displayComments = async (event) => {
             <h4>Add a comment </h4>
             
 
-            <form >
+            <form class="form-comment">
                 <input type="text" placeholder="Name" id="username" name="username" maxlength="20"/>
                 <textarea name="text-area" maxlength="220" id:"comment" placeholder="Leave a comment"></textarea>
                 <button type="submit" class="add-btn">Comment</button>
@@ -101,6 +100,8 @@ const displayComments = async (event) => {
       };
 
       createComments(obj);
+      document.querySelector('.form-comment').reset();
+      displayComments(event);
     });
 
     const closeBtn = document.querySelector('.fa-times');
