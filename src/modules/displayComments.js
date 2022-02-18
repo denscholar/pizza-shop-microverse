@@ -27,35 +27,42 @@ const displayComments = async (event) => {
 
         popup.innerHTML = `
             <div class="popupHeader">
-            <img src="${element.food.image}" alt="food image">
-            <i class="fas fa-times"></i>
-            </div>
-            <div class="popupLabel">
-            <p>${element.food.label}</p>
-            </div>
-            <div class="popupInfo">
-            <table>
-            <tr>
-            <td>Category: ${element.food.category} </td><td>Fat: ${element.food.nutrients.FAT}</td>
-            </tr>
-            <tr>
-            <td>Weight: ${element.measures[0].weight} </td><td>Calories (kcal): ${element.food.nutrients.ENERC_KCAL}</td>
-            </tr>
-            </table>
+              <img src="${element.food.image}" alt="food image">
+              <i class="fas fa-times"></i>
+              </div>
+              <div class="popupLabel">
+              <p>${element.food.label}</p>
+              </div>
+              <div class="popupInfo">
+              <table>
+              <tr>
+              <td>Category: ${element.food.category} </td><td>Fat: ${element.food.nutrients.FAT}</td>
+              </tr>
+              <tr>
+              <td>Weight: ${element.measures[0].weight} </td><td>Calories (kcal): ${element.food.nutrients.ENERC_KCAL}</td>
+              </tr>
+              </table>
             </div>
             
-            <div class="comment-section">
+          <div class="comment-section">
+
+            <div>
+              <p>Comments (${counter})</p>
+            </div>
+
+            <ul>
+            </ul>
             
-            <h2>Add a comment</h2>
-            <span id="alart"></span>
-            <br />
+            <h4>Add a comment </h4>
+            
+
             <form >
                 <input type="text" placeholder="Name" id="username" name="username" maxlength="20"/>
                 <textarea name="text-area" maxlength="220" id:"comment" placeholder="Leave a comment"></textarea>
                 <button type="submit" class="add-btn">Comment</button>
               </form>
-            </div>
-            `;
+          </div>
+        `;
       }
     });
 
