@@ -45,19 +45,13 @@ const displayComments = async (event) => {
             </div>
             
             <div class="comment-section">
-            <div>
-            <p>Number of Comments (${counter})</p>
-            </div>
-
-            <ul class="comment-container">
-
-            </ul>
-
-            <h2>Add a comment</h2>
             
+            <h2>Add a comment</h2>
+            <span id="alart"></span>
+            <br />
             <form >
-                <input type="text" placeholder="Name" id="username" name="username" maxlength="20" required/>
-                <textarea name="text-area" maxlength="220" id:"comment" placeholder="Leave a comment" required></textarea>
+                <input type="text" placeholder="Name" id="username" name="username" maxlength="20"/>
+                <textarea name="text-area" maxlength="220" id:"comment" placeholder="Leave a comment"></textarea>
                 <button type="submit" class="add-btn">Comment</button>
               </form>
             </div>
