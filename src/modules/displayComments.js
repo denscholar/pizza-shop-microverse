@@ -60,14 +60,14 @@ const displayComments = async (event) => {
             ${comStr}
             </div>
             
-            <h4>Add a comment </h4>
-            
+                      
 
             <form class="form-comment">
-                <input type="text" placeholder="Name" id="username" name="username" maxlength="20 required"/>
-                <textarea name="text-area" maxlength="300" id:"comment" placeholder="Leave a comment" required></textarea>
-                <button type="submit" class="add-btn">Comment</button>
-              </form>
+              <h4>Add a comment </h4>
+              <input type="text" placeholder="Name" id="username" name="username" maxlength="20 required"/>
+              <textarea name="text-area" maxlength="300" id:"comment" placeholder="Leave a comment" required></textarea>
+              <button type="submit" class="add-btn">Comment</button>
+            </form>
           </div>
         `;
       }
@@ -92,11 +92,11 @@ const displayComments = async (event) => {
 
     submitButton.addEventListener('click', (event) => {
       event.preventDefault();
-      const nameOfUser = document.querySelector('#username').value;
+      const user = document.querySelector('#username').value;
       const comt = document.querySelector('textarea').value;
       const obj = {
         item_id: itemCode,
-        username: nameOfUser,
+        username: user,
         comment: comt,
       };
 
