@@ -1,7 +1,6 @@
-import { addComments } from './commentAPI.js';
-
 const appId = '2d879374';
 const appKey = 'f1a2011b05e44970c7a43ac9a5a11568';
+let counter = 0;
 
 const displayComments = async (event) => {
   if (event.target.classList.contains('comment')) {
@@ -13,11 +12,15 @@ const displayComments = async (event) => {
     popup.setAttribute('id', 'overlay');
     existingNode.parentNode.insertBefore(popup, existingNode);
 
+    const comments = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/IvP42xNcmZ7sT5rp87wL/comments?item_id=${sourceId}`);
+    const comList = await comments.json();
+
+    counter = comList.length;
+
     const baseURL = `https://api.edamam.com/api/food-database/v2/parser?ingr=pizza&app_id=${appId}&app_key=${appKey}&to=13`;
     const response = await fetch(baseURL);
     const data = await response.json();
     let itemCode;
-    let commentLength = 0;
 
     data.hints.forEach((element) => {
       if (element.food.foodId === sourceId) {
@@ -43,7 +46,7 @@ const displayComments = async (event) => {
             </div>
             <div class="comment-section">
             <h2>Add a comment</h2>
-            <h4>Comments (<span class="counter">${commentsLength}</span>)</h4>
+            <h4>Comments (<span class="counter">${counter}</span>)</h4>
             <ul class="comment-container"></ul>
             <form >
                 <input type="text" placeholder="Name" id="username" name="username" maxlength="20" required/>
@@ -55,20 +58,34 @@ const displayComments = async (event) => {
       }
     });
 
-    const submitButton = document.querySelector('.add-btn');
+    const submitButton = document.querySelector('.submitBtn');
+    const createComments = async (obj) => {
+      const myHeaders = new Headers();
+      myHeaders.append('Content-Type', 'application/json');
+
+      const raw = JSON.stringify(obj);
+
+      const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow',
+      };
+
+      fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/IvP42xNcmZ7sT5rp87wL/comments/', requestOptions);
+    };
 
     submitButton.addEventListener('click', (event) => {
-      event.preventDefault;
-      const nameOfUser = document.querySelector('#userName').value;
-      const comt = document.querySelector('#comment').value;
+      event.preventDefault();
+      const nameOfUser = document.querySelector('#username').value;
+      const comment = document.querySelector('#comment').value;
       const obj = {
         item_id: itemCode,
         username: nameOfUser,
         comt: comment,
       };
 
-      createComments();
-      addComments(event, form, id);
+      createComments(obj);
     });
 
     const closeBtn = document.querySelector('.fa-times');
@@ -77,15 +94,6 @@ const displayComments = async (event) => {
       parentNode.removeChild(popup);
     });
   }
-};
-
-const commentSection = document.querySelector('.container');
-
-const createComments = (foodData, commentLength) => {
-  const comArticle = document.createElement('div');
-  comArticle.className = 'comment-card';
-  comArticle.innerHTML = displayComments(foodData, commentLength);
-  commentSection.appendChild(comArticle);
 };
 
 export default displayComments;
