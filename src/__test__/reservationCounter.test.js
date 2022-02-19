@@ -22,10 +22,10 @@ describe('Count the added comments', () => {
             date_end: "2020-10-21"
         },
     ];
-    expect(commentCounter(comments)).toBe(2);
+    expect(reservationCounter(comments)).toBe(3);
   });
   test('Should return 0 when empty', () => {
     const comments = [];
-    expect(commentCounter(comments)).toBe(0);
+    expect(reservationCounter(comments)).toBe(0);
   });
 });
