@@ -1,7 +1,7 @@
 const appId = '2d879374';
 const appKey = 'f1a2011b05e44970c7a43ac9a5a11568';
 let str1 = '';
-let counter = 0;
+let counter;
 
 const displayReservations = async (event) => {
   if (event.target.classList.contains('reserve')) {
@@ -20,7 +20,15 @@ const displayReservations = async (event) => {
       str1 += `<li> ${element.date_start.toLocaleString().split(',')[0]} - ${element.date_end.toLocaleString().split(',')[0]} by ${element.username} </li>`;
     });
 
-    counter = reservItem.length;
+    const calcCounter = () => {
+      if (reservItem.length) {
+        counter = reservItem.length;
+      } else {
+        counter = 0;
+      }
+    };
+
+    calcCounter();
 
     const baseURL = `https://api.edamam.com/api/food-database/v2/parser?ingr=pizza&app_id=${appId}&app_key=${appKey}&to=13`;
     const response = await fetch(baseURL);
@@ -73,9 +81,8 @@ const displayReservations = async (event) => {
       }
     });
 
-
-
     const submitButton = document.querySelector('.submitBtn');
+
     const createReservation = async (obj) => {
       const myHeaders = new Headers();
       myHeaders.append('Content-Type', 'application/json');
@@ -100,7 +107,6 @@ const displayReservations = async (event) => {
       const counterContent = document.querySelector('#counterPlace');
       const contentShow = document.querySelector('#showContent');
 
-      
       localStorage.setItem('session', event);
       const obj = {
         item_id: itemCode,
@@ -109,16 +115,11 @@ const displayReservations = async (event) => {
         date_end: ending,
       };
 
-
-
       createReservation(obj);
-     
       counterContent.innerHTML = counter + 1;
-      contentShow.innerHTML = str1 + `<li> ${starting.toLocaleString().split(',')[0]} - ${ending.toLocaleString().split(',')[0]} by ${nameOfUser} </li>`;
+      contentShow.innerHTML = `${str1}<li> ${starting.toLocaleString().split(',')[0]} - ${ending.toLocaleString().split(',')[0]} by ${nameOfUser} </li>`;
 
       document.querySelector('.reservationForm').reset();
-
-      
     });
 
     const closeBtn = document.querySelector('.fa-times');
@@ -132,4 +133,3 @@ const displayReservations = async (event) => {
 };
 
 export default displayReservations;
-
