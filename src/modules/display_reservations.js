@@ -1,3 +1,5 @@
+import reservationCounter from './reservationCounter.js';
+
 const appId = '2d879374';
 const appKey = 'f1a2011b05e44970c7a43ac9a5a11568';
 let str1 = '';
@@ -20,15 +22,8 @@ const displayReservations = async (event) => {
       str1 += `<li> ${element.date_start.toLocaleString().split(',')[0]} - ${element.date_end.toLocaleString().split(',')[0]} by ${element.username} </li>`;
     });
 
-    const calcCounter = () => {
-      if (reservItem.length) {
-        counter = reservItem.length;
-      } else {
-        counter = 0;
-      }
-    };
 
-    calcCounter();
+    counter = reservationCounter(reservItem);
 
     const baseURL = `https://api.edamam.com/api/food-database/v2/parser?ingr=pizza&app_id=${appId}&app_key=${appKey}&to=13`;
     const response = await fetch(baseURL);
