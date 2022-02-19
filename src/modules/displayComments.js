@@ -53,10 +53,10 @@ const displayComments = async (event) => {
           <div class="comment-section">
 
             <div>
-              <p>Comments (${counter})</p>
+              <p>Comments (<span id="counterPlace">${counter}</span>)</p>
             </div>
 
-            <div>
+            <div id="showContent">
             ${comStr}
             </div>
             
@@ -94,6 +94,8 @@ const displayComments = async (event) => {
       event.preventDefault();
       const user = document.querySelector('#username').value;
       const comt = document.querySelector('textarea').value;
+      const counterContent = document.querySelector('#counterPlace');
+      const contentShow = document.querySelector('#showContent');
       const obj = {
         item_id: itemCode,
         username: user,
@@ -101,13 +103,18 @@ const displayComments = async (event) => {
       };
 
       createComments(obj);
+      counterContent.innerHTML = counter + 1;
+      counter += 1;
+      contentShow.innerHTML = `${comStr}<div> ${user} : ${comt} </div>`;
+      comStr += `div> ${user} : ${comt} </div>`;
       document.querySelector('.form-comment').reset();
-      displayComments(event);
     });
 
     const closeBtn = document.querySelector('.fa-times');
 
     closeBtn.addEventListener('click', () => {
+      comStr = '';
+      counter = 0;
       parentNode.removeChild(popup);
     });
   }
