@@ -2,6 +2,8 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  color: white;
+  font-size: 20px;
 }
 
 * {
@@ -121,8 +123,8 @@ section {
   justify-content: space-between;
 }
 
-.item .likes {
-  font-size: 15px;
+.likes {
+  font-size: 20px;
   color: whitesmoke;
   letter-spacing: 1px;
 }
@@ -144,10 +146,10 @@ section {
   color: white;
 }
 
-.like-div {
+.likes-div {
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 5px;
   align-items: center;
   align-content: center;
 }
