@@ -28,7 +28,7 @@ const displayReservations = async (event) => {
       }
     };
 
-    calcReservationCounte();
+    calcReservationCounter();
 
     const baseURL = `https://api.edamam.com/api/food-database/v2/parser?ingr=pizza&app_id=${appId}&app_key=${appKey}&to=13`;
     const response = await fetch(baseURL);
