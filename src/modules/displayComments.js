@@ -1,7 +1,7 @@
 const appId = '2d879374';
 const appKey = 'f1a2011b05e44970c7a43ac9a5a11568';
 let comStr = '';
-let counter = 0;
+let counter;
 
 const displayComments = async (event) => {
   if (event.target.classList.contains('comment')) {
@@ -20,7 +20,15 @@ const displayComments = async (event) => {
       comStr += `<div> ${element.username} : ${element.comment} </div>`;
     });
 
-    counter = commentItem.length;
+    const commentCounter = () => {
+      if (commentItem.length) {
+        counter = commentItem.length;
+      } else {
+        counter = 0;
+      }
+    };
+
+    commentCounter();
 
     const baseURL = `https://api.edamam.com/api/food-database/v2/parser?ingr=pizza&app_id=${appId}&app_key=${appKey}&to=13`;
     const response = await fetch(baseURL);
@@ -53,11 +61,13 @@ const displayComments = async (event) => {
           <div class="comment-section">
 
             <div>
-              <p>Comments (${counter})</p>
+              <p><span>Comments</span> (<span id="count-comments">${counter}</span>) </p>
             </div>
 
             <div>
+            <ul id="show-comment">
             ${comStr}
+            </ul>
             </div>
             
                       
@@ -94,6 +104,10 @@ const displayComments = async (event) => {
       event.preventDefault();
       const user = document.querySelector('#username').value;
       const comt = document.querySelector('textarea').value;
+      const counterComment = document.querySelector('#count-comments');
+      const showComment = document.querySelector('#show-comment');
+
+      localStorage.setItem('session', event);
       const obj = {
         item_id: itemCode,
         username: user,
@@ -101,8 +115,10 @@ const displayComments = async (event) => {
       };
 
       createComments(obj);
+      counterComment.innerHTML = counter + 1;
+      showComment.innerHTML = `${comStr}<div> ${user} : ${comt} </div>`;
+
       document.querySelector('.form-comment').reset();
-      displayComments(event);
     });
 
     const closeBtn = document.querySelector('.fa-times');
@@ -111,6 +127,7 @@ const displayComments = async (event) => {
       parentNode.removeChild(popup);
     });
   }
+  return event;
 };
 
 export default displayComments;
