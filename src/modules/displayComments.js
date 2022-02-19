@@ -64,10 +64,8 @@ const displayComments = async (event) => {
               <p><span>Comments</span> (<span id="count-comments">${counter}</span>) </p>
             </div>
 
-            <div>
-            <ul id="show-comment">
+            <div id="show-comment">
             ${comStr}
-            </ul>
             </div>
             
                       
