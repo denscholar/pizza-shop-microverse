@@ -65,7 +65,7 @@ const displayReservations = async (event) => {
             <input type="text" name="userName" id="userName" placeholder="Your name" class="userInput" required>
             <input type="date" name="startDate" id="startDate" placeholder="Start date" class="userInput" required>
             <input type="date" name="endDate" id="endDate" placeholder="End date" class="userInput" required>
-            <button type="button" class="submitBtn reserve" id=${element.food.foodId}>Reserve</button>
+            <button type="button" class="reserve submitBtn" id=${element.food.foodId}>Reserve</button>
             </form>      
             </div>   
             `;
@@ -89,12 +89,12 @@ const displayReservations = async (event) => {
       fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/IvP42xNcmZ7sT5rp87wL/reservations/', requestOptions);
     };
 
-    submitButton.addEventListener('click', async (event) => {
+    submitButton.addEventListener('click', (event) => {
       event.preventDefault();
       const nameOfUser = document.querySelector('#userName').value;
       const starting = document.querySelector('#startDate').value;
       const ending = document.querySelector('#endDate').value;
-
+      localStorage.setItem('session', event);
       const obj = {
         item_id: itemCode,
         username: nameOfUser,
@@ -103,8 +103,9 @@ const displayReservations = async (event) => {
       };
 
       createReservation(obj);
+
       document.querySelector('.reservationForm').reset();
-      await displayReservations(event);
+      displayReservations(event);
     });
 
     const closeBtn = document.querySelector('.fa-times');
@@ -113,6 +114,8 @@ const displayReservations = async (event) => {
       parentNode.removeChild(popup);
     });
   }
+
+  return event;
 };
 
 export default displayReservations;
