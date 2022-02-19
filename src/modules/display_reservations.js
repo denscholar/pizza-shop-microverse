@@ -49,13 +49,13 @@ const displayReservations = async (event) => {
             </table>
             </div>
 <div class = "displayCounter">
-<p>Reservations (${counter})</p>
+<p><span>Reservations</span> (<span id="counterPlace">${counter}</span>)</p>
 
 
 </div>
 
             <div class="show">
-            <ul>
+            <ul id="showContent">
             ${str1}
             </ul>>
             </div>
@@ -94,6 +94,10 @@ const displayReservations = async (event) => {
       const nameOfUser = document.querySelector('#userName').value;
       const starting = document.querySelector('#startDate').value;
       const ending = document.querySelector('#endDate').value;
+      const counterContent = document.querySelector('#counterPlace');
+      const contentShow = document.querySelector('#showContent');
+
+      
       localStorage.setItem('session', event);
       const obj = {
         item_id: itemCode,
@@ -102,10 +106,16 @@ const displayReservations = async (event) => {
         date_end: ending,
       };
 
+
+
       createReservation(obj);
+     
+      counterContent.innerHTML = counter + 1;
+      contentShow.innerHTML = str1 + `<li> ${starting.toLocaleString().split(',')[0]} - ${ending.toLocaleString().split(',')[0]} by ${nameOfUser} </li>`;
 
       document.querySelector('.reservationForm').reset();
-      displayReservations(event);
+
+      
     });
 
     const closeBtn = document.querySelector('.fa-times');
