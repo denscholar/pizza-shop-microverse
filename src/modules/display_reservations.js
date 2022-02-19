@@ -54,7 +54,6 @@ const displayReservations = async (event) => {
 <div class = "displayCounter">
 <p><span>Reservations</span> (<span id="counterPlace">${counter}</span>)</p>
 
-
 </div>
 
             <div class="show">
@@ -123,6 +122,8 @@ const displayReservations = async (event) => {
 
     closeBtn.addEventListener('click', () => {
       parentNode.removeChild(popup);
+      str1 = '';
+      counter = 0;
     });
   }
 
