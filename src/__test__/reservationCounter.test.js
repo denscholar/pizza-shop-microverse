@@ -1,8 +1,8 @@
-import reservationCounter from './reservationCounter.js';
+import reservationCounter from '../modules/reservationCounter.js';
 
-describe('Count the added comments', () => {
-  test('Should return 2 when comment array is two', () => {
-    const comments = [
+describe('Count the added reservations', () => {
+  test('Should return 2 when reservations array is two', () => {
+    const reservations = [
       {
         item_id: 'item1',
         username: 'Nanotte',
@@ -22,10 +22,10 @@ describe('Count the added comments', () => {
         date_end: '2020-10-21',
       },
     ];
-    expect(reservationCounter(comments)).toBe(3);
+    expect(reservationCounter(reservations)).toBe(3);
   });
   test('Should return 0 when empty', () => {
-    const comments = [];
-    expect(reservationCounter(comments)).toBe(0);
+    const reservations = [];
+    expect(reservationCounter(reservations)).toBe(0);
   });
 });
