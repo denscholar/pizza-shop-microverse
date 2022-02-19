@@ -19,6 +19,7 @@ const displayReservations = async (event) => {
     reservItem.forEach((element) => {
       str1 += `<li> ${element.date_start.toLocaleString().split(',')[0]} - ${element.date_end.toLocaleString().split(',')[0]} by ${element.username} </li>`;
     });
+
     counter = reservItem.length;
 
     const baseURL = `https://api.edamam.com/api/food-database/v2/parser?ingr=pizza&app_id=${appId}&app_key=${appKey}&to=13`;
@@ -71,6 +72,8 @@ const displayReservations = async (event) => {
             `;
       }
     });
+
+
 
     const submitButton = document.querySelector('.submitBtn');
     const createReservation = async (obj) => {
@@ -129,3 +132,4 @@ const displayReservations = async (event) => {
 };
 
 export default displayReservations;
+
