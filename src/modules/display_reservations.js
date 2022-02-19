@@ -110,12 +110,10 @@ const displayReservations = async (event) => {
 
       createReservation(obj);
       counterContent.innerHTML = counter + 1;
-      counter = counter + 1;
-      contentShow.innerHTML = str1 + `<li> ${starting.toLocaleString().split(',')[0]} - ${ending.toLocaleString().split(',')[0]} by ${nameOfUser} </li>`;
-      str1 = str1 + `<li> ${starting.toLocaleString().split(',')[0]} - ${ending.toLocaleString().split(',')[0]} by ${nameOfUser} </li>`;
+      counter += 1;
+      contentShow.innerHTML = `${str1}<li> ${starting.toLocaleString().split(',')[0]} - ${ending.toLocaleString().split(',')[0]} by ${nameOfUser} </li>`;
+      str1 += `<li> ${starting.toLocaleString().split(',')[0]} - ${ending.toLocaleString().split(',')[0]} by ${nameOfUser} </li>`;
       document.querySelector('.reservationForm').reset();
-
-
     });
 
     const closeBtn = document.querySelector('.fa-times');
