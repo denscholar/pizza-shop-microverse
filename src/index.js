@@ -33,36 +33,37 @@ const generateHtml = (results) => {
     const divItem = document.createElement('div');
     divItem.classList.add('item');
     divItem.innerHTML = `
-        <img src="${result.food.image}" alt="${result.food.label}">
-        <div class="flex-container">
-            <h1 class="title">${result.food.label}</h1>
-            <div class="like-div">
-            <button class="icon" type="button">&#10084;</button>
-            </div>
-        </div>
-        <p class="item-data">
-            <a class="comment" id=${result.food.foodId} href="">Comment</a>
-            <a class="reserve" id=${result.food.foodId} href="">Reservation</a>
-        </p>
+    <img src="${result.food.image}" alt="${result.food.label}">
+    <div class="flex-container">
+      <h1 class="title">${result.food.label}</h1>
+      <div class="likes-div">
+        <button class="icon" type="button">&#10084;</button>
+        <p class="likes" id="${result.food.foodId}"></p>Likes
+      </div>
+    </div>
+    <div class="item-data">
+        <a class="comment" id=${result.food.foodId} href="">Comment</a>
+        <a class="reserve" id=${result.food.foodId} href="">Reservation</a>
+    </div>
         `;
     searchResult.appendChild(divItem);
   });
-  const div = document.querySelectorAll('.like-div');
-  div.forEach((container, index) => {
-    getLikes().then((response) => {
-      const likes = document.createElement('p');
-      likes.classList.add('likes');
-      likes.setAttribute('id', `${response[index].item_id}`);
-      likes.textContent = `
-       ${response[index].likes} Likes
-        `;
-      container.appendChild(likes);
-    });
+  getLikes().then((response) => {
+    const likes = document.querySelectorAll('.likes');
+    for (let i = 0; i < response.length; i++) {
+      likes[i].textContent = `
+        ${response[i].likes}
+      `;
+    }
   });
 
   const icons = document.querySelectorAll('.icon');
   icons.forEach((icon) => {
-    icon.addEventListener('click', addLikes);
+    icon.addEventListener('click', (e) => {
+      addLikes(e);
+      const numOfLikes = e.target.parentNode.children[1];
+      numOfLikes.textContent = +numOfLikes.textContent + 1;
+    });
   });
 };
 
@@ -78,8 +79,7 @@ document.querySelector('.search-result').addEventListener('click', (event) => {
   event.preventDefault();
   displayReservations(event);
 });
-
-// counter
+git 
 counter().then((data) => {
   const counter = data.hints.slice(3, 12).length;
   const countHeader = document.querySelector('.counter');
