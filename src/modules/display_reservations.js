@@ -22,7 +22,6 @@ const displayReservations = async (event) => {
       str1 += `<li> ${element.date_start.toLocaleString().split(',')[0]} - ${element.date_end.toLocaleString().split(',')[0]} by ${element.username} </li>`;
     });
 
-
     counter = reservationCounter(reservItem);
 
     const baseURL = `https://api.edamam.com/api/food-database/v2/parser?ingr=pizza&app_id=${appId}&app_key=${appKey}&to=13`;
@@ -54,7 +53,6 @@ const displayReservations = async (event) => {
             </div>
 <div class = "displayCounter">
 <p><span>Reservations</span> (<span id="counterPlace">${counter}</span>)</p>
-
 
 </div>
 
@@ -112,8 +110,9 @@ const displayReservations = async (event) => {
 
       createReservation(obj);
       counterContent.innerHTML = counter + 1;
+      counter += 1;
       contentShow.innerHTML = `${str1}<li> ${starting.toLocaleString().split(',')[0]} - ${ending.toLocaleString().split(',')[0]} by ${nameOfUser} </li>`;
-
+      str1 += `<li> ${starting.toLocaleString().split(',')[0]} - ${ending.toLocaleString().split(',')[0]} by ${nameOfUser} </li>`;
       document.querySelector('.reservationForm').reset();
     });
 
@@ -121,6 +120,8 @@ const displayReservations = async (event) => {
 
     closeBtn.addEventListener('click', () => {
       parentNode.removeChild(popup);
+      str1 = '';
+      counter = 0;
     });
   }
 
