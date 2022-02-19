@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import './styles.css';
 import './popupStyle.css';
 import './comment.css';
@@ -5,7 +6,6 @@ import displayReservations from './modules/display_reservations.js';
 import counter from './modules/counter.js';
 import { baseURL, likesUrl } from './modules/apis.js';
 import displayComments from './modules/displayComments.js';
-
 
 const header = new Headers({ 'Content-type': 'application/json; charset=UTF-8' });
 const searchResult = document.querySelector('.search-result');
@@ -84,7 +84,7 @@ document.querySelector('.search-result').addEventListener('click', (event) => {
   displayReservations(event);
   displayComments(event);
 });
-git 
+
 counter().then((data) => {
   const counter = data.hints.slice(3, 12).length;
   const countHeader = document.querySelector('.counter');
