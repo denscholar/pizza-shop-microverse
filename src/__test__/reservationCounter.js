@@ -1,11 +1,11 @@
 const reservationCounter = (reservation) => {
-    let counter;
+  let counter;
   if (reservation.length) {
     counter = reservation.length;
   } else {
     counter = 0;
   }
-  return counter
+  return counter;
 };
 
 export default reservationCounter;
