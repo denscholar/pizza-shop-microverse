@@ -105,7 +105,7 @@ const displayComments = async (event) => {
       counterContent.innerHTML = counter + 1;
       counter += 1;
       contentShow.innerHTML = `${comStr}<div> ${user} : ${comt} </div>`;
-      comStr += `div> ${user} : ${comt} </div>`;
+      comStr += `<div> ${user} : ${comt} </div>`;
       document.querySelector('.form-comment').reset();
     });
 
