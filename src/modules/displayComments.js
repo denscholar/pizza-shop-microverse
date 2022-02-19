@@ -59,8 +59,7 @@ const displayComments = async (event) => {
             <div id="showContent">
             ${comStr}
             </div>
-            
-                      
+                     
 
             <form class="form-comment">
               <h4>Add a comment </h4>
