@@ -10,8 +10,6 @@ Please take a look at the video named Project.mp in this repository
 ## Description
 The Pizza Shop website displays a Pizza. I allow users to likes their favorites pizza, make reservation and comment.
 
-#``
-
 
 ## Getting started
 
