@@ -1,4 +1,4 @@
-# The Pizza shop 
+# The Pizza shop
 
 ## Screenshot
 
@@ -7,7 +7,8 @@
 ## Project presentation
 
 Please take a look at the video named Project.mp in this repository
-## DescriptionThe Pizza Shop website displays a Pizza. I allow users to likes their favorites pizza, make reservation and comment.
+
+## DescriptionThe Pizza Shop website displays a Pizza. I allow users to likes their favorites pizza, make reservation and comment
 
 ## Getting started
 
@@ -15,7 +16,7 @@ To explore or play with this code you should :
 
 - Download and install Git
 - Clone the repository with: `https://github.com/denscholar/pizza-shop-microverse.git`
-- Open the repository with: `cd pizza-shop-microverse` 
+- Open the repository with: `cd pizza-shop-microverse`
 - Use your favorite Integrated Development Environment (e.g. for Visual Studio Code the command is `code .`)
 - Install webpack with: `npm install --save-dev webpack webpack-cli`
 - Type in `nmp run start` or run live server from the docs directory
@@ -69,4 +70,4 @@ Please give a ⭐️ if you like this project!
 
 ## License
 
-This project is [MIT](https://github.com/microverseinc/readme-template/blob/master/MIT.md) licensed.
+This project is [MIT](https://github.com/microverseinc/readme-template/blob/master/MIT.md) licensed
