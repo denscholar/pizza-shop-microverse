@@ -1,0 +1,134 @@
+
+#overlay {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  z-index: 9999;
+  background-color: rgb(26, 26, 27);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  top: 0 !important;
+  max-height: 100vh !important;
+  overflow-y: scroll !important;
+}
+
+.popupHeader {
+  width: 100%;
+  display: flex;
+  padding-left: 15%;
+  gap: 10rem;
+  justify-content: center;
+}
+
+.popupHeader img {
+  width: 20vw;
+  height: auto;
+}
+
+.fa-times {
+  font-size: 5rem;
+  color: #fff;
+  cursor: pointer;
+  height: auto;
+  width: auto;
+}
+
+.popupLabel p {
+  text-align: center;
+  font-size: 40px;
+  color: whitesmoke;
+  margin-bottom: 30px;
+}
+
+.popupInfo {
+  display: flex;
+  justify-content: center;
+}
+
+.popupInfo table {
+  width: 70%;
+}
+
+table tr {
+  width: 100%;
+}
+
+td {
+  width: 48%;
+  text-align: left;
+  font-size: 1.5rem;
+  padding: 10px;
+  background-color: #404041;
+  color: white;
+  font-weight: 600;
+  border-radius: 4px;
+  margin-top: 1.1rem;
+}
+
+.popupReservation {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  min-height: 30vh;
+}
+
+.popupReservation form {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 1.5rem;
+  gap: 1.5rem;
+}
+
+.userInput {
+  font-size: 1.5rem;
+  padding: 0.8rem;
+  background-color: #404041;
+  color: white;
+  font-weight: 600;
+  border-radius: 4px;
+  width: 35%;
+}
+
+.popupReservation h2 {
+  text-align: center;
+  font-size: 40px;
+  color: whitesmoke;
+  margin-bottom: 30px;
+}
+
+.submitBtn {
+  width: 35%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.displayCounter p {
+  text-align: center;
+  font-size: 40px;
+  color: whitesmoke;
+  margin-bottom: 30px;
+}
+
+.show ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.show ul li {
+  font-size: 1.5rem;
+  padding: 10px;
+  background-color: #404041;
+  color: #fff;
+  width: 35%;
+  font-weight: 600;
+  border-radius: 4px;
+  margin-top: 1.1rem;
+}

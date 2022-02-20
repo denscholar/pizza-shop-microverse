@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: white;
+  font-size: 20px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.title-cover {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.title-cover .counter {
+  font-size: 25px;
+  color: whitesmoke;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.navbar {
+  width: 80%;
+  margin-left: 6rem;
+}
+
+.nav-brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navlinks {
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+.navbar-brand img {
+  width: 10rem;
+}
+
+section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0;
+  background-color: rgb(26, 26, 27);
+}
+
+.container {
+  width: 90%;
+  height: auto;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.brand {
+  text-align: center;
+  font-size: 40px;
+  color: whitesmoke;
+}
+
+.search-result {
+  margin-top: 50px;
+  width: 100%;
+  display: grid;
+  grid-gap: 15px;
+  grid-template: auto / repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.item {
+  width: 100%;
+  border-radius: 8px;
+  background: rgb(37, 37, 37);
+  padding: 13px;
+  overflow: hidden;
+}
+
+.item img {
+  width: 100%;
+  height: 300px;
+  border-radius: 4px;
+}
+
+.item .flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.item .title {
+  color: white;
+  font-size: 18px;
+}
+
+.item .view-btn {
+  padding: 10px;
+  background-color: #404041;
+  color: white;
+  font-weight: 600;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.item .item-data {
+  display: flex;
+  justify-content: space-between;
+}
+
+.likes {
+  font-size: 20px;
+  color: whitesmoke;
+  letter-spacing: 1px;
+}
+
+.item .comment,
+.reserve {
+  padding: 10px;
+  background-color: #404041;
+  color: white;
+  font-weight: 600;
+  border-radius: 4px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.heart {
+  font-size: 25px;
+  cursor: pointer;
+  color: white;
+}
+
+.likes-div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  align-items: center;
+  align-content: center;
+}
+
+footer {
+  display: flex;
+  background-color: rgb(26, 26, 27);
+  border: 3px solid whitesmoke;
+  height: 10vh;
+  padding-left: 100px;
+  align-items: center;
+}
+
+footer p {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.icon {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  font-size: 25px;
+  color: white;
+}
