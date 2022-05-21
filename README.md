@@ -18,7 +18,7 @@ To explore or play with this code you should :
 - Clone the repository with: `https://github.com/denscholar/pizza-shop-microverse.git`
 - Open the repository with: `cd pizza-shop-microverse`
 - Use your favorite Integrated Development Environment (e.g. for Visual Studio Code the command is `code .`)
-- Install webpack with: `npm install --save-dev webpack webpack-cli`
+- Install webpack with: `npm install`
 - Type in `nmp run start` or run live server from the docs directory
 
 ### Open page in browser
